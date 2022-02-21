@@ -6,7 +6,7 @@ import java.math.BigDecimal;
 import java.util.Date;
 
 @Data
-public class Income {
+public class IncomeModel {
 
     private String description;
     private BigDecimal value;
