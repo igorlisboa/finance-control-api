@@ -1,4 +1,4 @@
-package br.com.financial.financecontrolapi.model;
+package br.com.financial.financecontrolapi.dto;
 
 import lombok.Data;
 

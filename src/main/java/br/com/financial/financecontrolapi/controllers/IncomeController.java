@@ -1,6 +1,6 @@
 package br.com.financial.financecontrolapi.controllers;
 
-import br.com.financial.financecontrolapi.model.IncomeModel;
+import br.com.financial.financecontrolapi.dto.IncomeModel;
 import io.swagger.annotations.Api;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;

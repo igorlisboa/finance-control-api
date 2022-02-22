@@ -1,11 +1,11 @@
-package br.com.financial.financecontrolapi.model;
+package br.com.financial.financecontrolapi.dto;
 
 import io.swagger.annotations.ApiModel;
 import lombok.Data;
 
 @ApiModel
 @Data
-public class LauchTypeModel {
+public class LauchTypeDTO {
 
     private Long code;
 

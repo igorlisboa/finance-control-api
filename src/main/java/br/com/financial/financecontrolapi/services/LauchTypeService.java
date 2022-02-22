@@ -1,7 +1,7 @@
 package br.com.financial.financecontrolapi.services;
 
 import br.com.financial.financecontrolapi.entities.LaunchTypeEntity;
-import br.com.financial.financecontrolapi.model.LauchTypeModel;
+import br.com.financial.financecontrolapi.dto.LauchTypeDTO;
 import br.com.financial.financecontrolapi.repositories.LaunchTypeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,42 +15,42 @@ public class LauchTypeService {
     @Autowired
     private LaunchTypeRepository launchTypeRepository;
 
-    public List<LauchTypeModel> findAll(){
+    public List<LauchTypeDTO> findAll(){
         List<LaunchTypeEntity> typeRepositoryAll = launchTypeRepository.findAll();
-        List<LauchTypeModel> lauchTypeModels = new ArrayList<>();
+        List<LauchTypeDTO> lauchTypeDTOS = new ArrayList<>();
         if (!typeRepositoryAll.isEmpty()){
             typeRepositoryAll.forEach(item -> {
-                lauchTypeModels.add(converterToModel(item));
+                lauchTypeDTOS.add(converterToModel(item));
             });
         }
-        return lauchTypeModels;
+        return lauchTypeDTOS;
     }
 
-    public LauchTypeModel insert(LauchTypeModel lauchTypeModel){
-        LaunchTypeEntity save = launchTypeRepository.save(converterToEntity(lauchTypeModel));
+    public LauchTypeDTO insert(LauchTypeDTO lauchTypeDTO){
+        LaunchTypeEntity save = launchTypeRepository.save(converterToEntity(lauchTypeDTO));
 
         return converterToModel(save);
     }
 
-    public LauchTypeModel update(LauchTypeModel lauchTypeModel){
-        LaunchTypeEntity save = launchTypeRepository.save(converterToEntity(lauchTypeModel));
+    public LauchTypeDTO update(LauchTypeDTO lauchTypeDTO){
+        LaunchTypeEntity save = launchTypeRepository.save(converterToEntity(lauchTypeDTO));
         return converterToModel(save);
     }
 
-    public Boolean delete(LauchTypeModel lauchTypeModel){
-        launchTypeRepository.delete(converterToEntity(lauchTypeModel));
-        return launchTypeRepository.existsById(lauchTypeModel.getCode());
+    public Boolean delete(LauchTypeDTO lauchTypeDTO){
+        launchTypeRepository.delete(converterToEntity(lauchTypeDTO));
+        return launchTypeRepository.existsById(lauchTypeDTO.getCode());
     }
 
-    private LauchTypeModel converterToModel(LaunchTypeEntity entity) {
-        LauchTypeModel model = new LauchTypeModel();
+    private LauchTypeDTO converterToModel(LaunchTypeEntity entity) {
+        LauchTypeDTO model = new LauchTypeDTO();
         model.setCode(entity.getId());
         model.setType(entity.getType());
         model.setDescription(entity.getDescription());
         return model;
     }
 
-    private LaunchTypeEntity converterToEntity(LauchTypeModel model) {
+    private LaunchTypeEntity converterToEntity(LauchTypeDTO model) {
         LaunchTypeEntity entity = new LaunchTypeEntity();
         if(model.getCode() != null){
             entity.setId(model.getCode());

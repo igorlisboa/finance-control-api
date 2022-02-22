@@ -1,6 +1,6 @@
 package br.com.financial.financecontrolapi.controllers;
 
-import br.com.financial.financecontrolapi.model.LauchTypeModel;
+import br.com.financial.financecontrolapi.dto.LauchTypeDTO;
 import br.com.financial.financecontrolapi.services.LauchTypeService;
 import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,26 +18,26 @@ public class LaunchTypeController {
     private LauchTypeService launchTypeService;
 
     @GetMapping
-    public ResponseEntity<List<LauchTypeModel>> getAllLaunchType() {
-        List<LauchTypeModel> body = launchTypeService.findAll();
+    public ResponseEntity<List<LauchTypeDTO>> getAllLaunchType() {
+        List<LauchTypeDTO> body = launchTypeService.findAll();
         return ResponseEntity.ok(body);
     }
 
     @PostMapping
-    public ResponseEntity<LauchTypeModel> insertLaunchType(LauchTypeModel lauchTypeModel) {
-        LauchTypeModel body = launchTypeService.insert(lauchTypeModel);
+    public ResponseEntity<LauchTypeDTO> insertLaunchType(LauchTypeDTO lauchTypeDTO) {
+        LauchTypeDTO body = launchTypeService.insert(lauchTypeDTO);
         return ResponseEntity.ok(body);
     }
 
     @PutMapping
-    public ResponseEntity<LauchTypeModel> updateLaunchType(LauchTypeModel lauchTypeModel) {
-        LauchTypeModel body = launchTypeService.update(lauchTypeModel);
+    public ResponseEntity<LauchTypeDTO> updateLaunchType(LauchTypeDTO lauchTypeDTO) {
+        LauchTypeDTO body = launchTypeService.update(lauchTypeDTO);
         return ResponseEntity.ok(body);
     }
 
     @DeleteMapping
-    public ResponseEntity<Boolean> deleteLaunchType(LauchTypeModel lauchTypeModel) {
-        Boolean body = launchTypeService.delete(lauchTypeModel);
+    public ResponseEntity<Boolean> deleteLaunchType(LauchTypeDTO lauchTypeDTO) {
+        Boolean body = launchTypeService.delete(lauchTypeDTO);
         return ResponseEntity.ok(body);
     }
 }
